@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "geekdailies",
+  "info": {
+    "singularName": "geekdaily",
+    "pluralName": "geekdailies",
+    "displayName": "geekdaily"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "episode": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "time": {
+      "type": "date"
+    },
+    "introduce": {
+      "type": "text"
+    }
+  }
+}
