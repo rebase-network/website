@@ -4,10 +4,11 @@
   "info": {
     "singularName": "geekdaily",
     "pluralName": "geekdailies",
-    "displayName": "geekdaily"
+    "displayName": "Geekdaily",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -28,6 +29,11 @@
     },
     "introduce": {
       "type": "text"
+    },
+    "editor": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::editor.editor"
     }
   }
 }
