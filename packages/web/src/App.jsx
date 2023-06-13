@@ -1,21 +1,21 @@
 import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '/public/assets/css/theme.min.css';
+
 import './App.css'
 
-import Header from './components/header/Header'
+import Navbar from './components/navbar/Navbar'
+import Footer from './components/footer/Footer'
 import Home from './components/home/Home'
-import About from './components/about/About'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className='App'>
-
-      <Header/>
+      <Navbar/>
       <Home/>
-      <About/>
-
+      <Footer/>
     </div>
   )
 }
