@@ -42,7 +42,7 @@ const Navbar = ()=>{
 
             <li className="nav-item ml-lg-3 mt-3 mt-lg-0">
               <a className="btn btn-sm btn-primary hover-lift-light mt-1" href="#" target="_blank">
-                Sign up
+                Sign in
               </a>
             </li>
 
