@@ -33,11 +33,11 @@ const Navbar = ()=>{
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href="#">Links</a>
+              <a className="nav-link" href="#">About</a>
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href="#">About</a>
+              <a className="nav-link" target="_blank" href="https://rebased.ventures/">Rebase D.Ventures</a>
             </li>
 
             <li className="nav-item ml-lg-3 mt-3 mt-lg-0">

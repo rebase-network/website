@@ -8,52 +8,39 @@ const Footer = ()=>{
         <div className="row">
           <div className="col-12 col-md">
             <h6 className="footer-header mb-4 pb-2">
-              Company
+              Products
             </h6>
-            <a href="#" className="footer-link font-size-normal">
-              Portfolio
+            <a href="https://web3camp.us/" target="_blank" className="footer-link font-size-normal">
+              Web3Camp
             </a>
-            <a href="#" className="footer-link font-size-normal mt-2">
-              Our clients
-            </a>
-            <a href="#" className="footer-link font-size-normal mt-2">
-              Careers
+            <a href="https://github.com/accountjs/account.js" target="_blank" className="footer-link font-size-normal mt-2">
+              Account.js
             </a>
           </div>
 
           <div className="col-12 col-md mt-5 mt-md-0">
             <h6 className="footer-header mb-4 pb-2">
-              Offices
+              Resources
             </h6>
+
             <span className="footer-link font-size-normal">
-              345 Main St. San Francisco, CA
+              Media Kits
             </span>
-            <span className="footer-link font-size-normal mt-2">
-              103 N. 13th Street. Seattle, WA
+
+            <span className="footer-link font-size-normal">
+              Mascot
             </span>
           </div>
 
           <div className="col-12 col-md mt-5 mt-md-0">
             <h6 className="footer-header mb-4 pb-2">
-              Contact
+              Information
             </h6>
             <a href="#" className="footer-link font-size-normal">
               +1 555 555 555
             </a>
             <a href="#" className="footer-link font-size-normal mt-2">
               info@themes.com
-            </a>
-          </div>
-
-          <div className="col-12 col-md mt-5 mt-md-0">
-            <h6 className="footer-header mb-4 pb-2">
-              Account
-            </h6>
-            <a href="#" className="footer-link font-size-normal">
-              Log in to your account
-            </a>
-            <a href="#" className="footer-link font-size-normal mt-2">
-              Support
             </a>
           </div>
         </div>

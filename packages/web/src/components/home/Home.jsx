@@ -14,7 +14,7 @@ const Home = ()=>{
             Rebase is a non-profit developer community founded by a group of Chinese Web3 developers.
           </p>
           <a href="#" className="btn btn-success btn-lg w-lg-250 text-uppercase-bold-sm shadow-sm hover-lift-light">
-            Let us start
+            Get Started
           </a>
           <p className="text-muted text-uppercase-xs mt-3 mb-0">
             More than 1500 developers and 9000 crypto enthusiasts have joined our community.
