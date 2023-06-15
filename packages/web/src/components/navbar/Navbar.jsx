@@ -21,7 +21,7 @@ const Navbar = ()=>{
             </li>
 
             <li className="nav-item">
-              <a className="nav-link" href="#">Web3Daily</a>
+              <a className="nav-link" href="/geekdaily">Web3Daily</a>
             </li>
 
             <li className="nav-item">
