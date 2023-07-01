@@ -6,7 +6,7 @@
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-const defaultRouter = createCoreRouter("api::geekdaily.geekdaily");
+const defaultRouter = createCoreRouter('api::geekdaily.geekdaily');
 
 const customRouter = (innerRouter, extraRoutes = []) => {
   // https://forum.strapi.io/t/how-to-add-custom-routes-to-core-routes-in-strapi-4/14070/7
@@ -24,13 +24,17 @@ const customRouter = (innerRouter, extraRoutes = []) => {
   };
 };
 
-
-const myExtraRoutes = [
+const extraRoutes = [
   {
-    method: "POST",
-    path: "/geekdailies/batchInsert",
-    handler: "api::geekdaily.geekdaily.batchInsert",
-  }
+    method: 'POST',
+    path: '/geekdailies/batchInsert',
+    handler: 'api::geekdaily.geekdaily.batchInsert',
+  },
+  {
+    method: 'GET',
+    path: '/geekdailies/all/list',
+    handler: 'api::geekdaily.geekdaily.list',
+  },
 ];
 
-module.exports = customRouter(defaultRouter, myExtraRoutes);
+module.exports = customRouter(defaultRouter, extraRoutes);

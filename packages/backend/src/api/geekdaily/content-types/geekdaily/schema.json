@@ -30,6 +30,13 @@
     "introduce": {
       "type": "text"
     },
+    "cover": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
     "editor": {
       "type": "relation",
       "relation": "oneToOne",
