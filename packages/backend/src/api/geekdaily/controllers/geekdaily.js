@@ -3,6 +3,13 @@
 /**
  * geekdaily controller
  */
+const {
+  getPaginationInfo,
+  convertPagedToStartLimit,
+  shouldCount,
+  transformPaginationResponse,
+} = require('@strapi/strapi/lib/core-api/service/pagination');
+
 const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::geekdaily.geekdaily', ({ strapi }) => ({
@@ -23,8 +30,43 @@ module.exports = createCoreController('api::geekdaily.geekdaily', ({ strapi }) =
   },
 
   async list(ctx) {
-    console.log(/controller list/);
-    const entities = await strapi.service('api::geekdaily.geekdaily').list();
-    ctx.send({ data: entities });
+    const fetchParams = ctx.query;
+
+    const queryParams = {
+      fields: ['title', 'episode', 'author', 'url', 'time', 'introduce'],
+      populate: {
+        cover: {
+          fields: ['url'],
+        },
+        editor: {
+          fields: ['name'],
+          populate: {
+            avatar: { fields: ['url'] },
+          },
+        },
+        category: {
+          fields: ['title'],
+        },
+      },
+    };
+
+    const paginationInfo = getPaginationInfo(fetchParams);
+
+    const entities = await strapi.entityService.findMany('api::geekdaily.geekdaily', {
+      ...queryParams,
+      ...fetchParams,
+      ...convertPagedToStartLimit(paginationInfo),
+    });
+
+    let result = {};
+    result['data'] = entities;
+    result['meta'] = paginationInfo;
+
+    if (shouldCount(fetchParams)) {
+      const count = await strapi.entityService.count('api::geekdaily.geekdaily', { ...fetchParams, ...paginationInfo });
+      result['meta'] = transformPaginationResponse(paginationInfo, count);
+    }
+
+    ctx.send(result);
   },
 }));
