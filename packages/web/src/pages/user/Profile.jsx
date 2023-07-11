@@ -1,7 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
 
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuthContext } from '/src/context/AuthContext';
 
 export default function Profile() {
   const { user, isLoading, setUser } = useAuthContext();
@@ -13,6 +12,8 @@ export default function Profile() {
           <span>{user?.username}</span>
           <br />
           <span>{user?.email}</span>
+          <br />
+          <a href="/admin/geekDaily/create">Create GeekDaily</a>
         </div>
       </section>
     </>

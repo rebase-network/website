@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+
+import { API, API_DOMAIN } from '/src/constant';
 import { useData } from '/src/utils/utils.js';
 
-const baseurl = 'http://localhost:1337';
-const apiurl = baseurl + '/api/v1';
-
 export default function GeekDaily() {
-  const geekdailiesurl = apiurl + '/geekdailies/all/list';
-  const categoriesurl = apiurl + '/categories';
+  const geekdailiesurl = API + '/geekdailies/all/list';
+  const categoriesurl = API + '/categories';
 
   const geekdailiesresult = useData(geekdailiesurl);
   const dails = geekdailiesresult.data;
@@ -52,7 +51,7 @@ export default function GeekDaily() {
                     <a
                       href="#!"
                       className="bg-cover h-250 rounded-top"
-                      style={{ backgroundImage: `url('${!!item.cover && baseurl + item.cover.url}')` }}
+                      style={{ backgroundImage: `url('${!!item.cover && API_DOMAIN + item.cover.url}')` }}
                     ></a>
 
                     <div className="card-body">
@@ -66,7 +65,7 @@ export default function GeekDaily() {
                     <div className="card-bottom-info">
                       <div className="avatar avatar-sm">
                         <img
-                          src={`${!!item.editor && baseurl + item.editor.avatar.url}`}
+                          src={`${!!item.editor && API_DOMAIN + item.editor.avatar.url}`}
                           className="avatar-image rounded-circle"
                           alt=""
                         />

@@ -1,10 +1,9 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useAuthContext } from '../../context/AuthContext';
-
-import { API } from '../../constant';
-import { setToken } from '../../utils/helper';
+import { useAuthContext } from '/src/context/AuthContext';
+import { API } from '/src/constant';
+import { setToken } from '/src/utils/helper';
 
 import logo from '/public/assets/img/rebase.png';
 
@@ -12,8 +11,6 @@ export default function Signin() {
   const navigate = useNavigate();
 
   const { setUser } = useAuthContext();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
 
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');

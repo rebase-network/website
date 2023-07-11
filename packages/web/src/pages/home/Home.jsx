@@ -6,7 +6,7 @@ const Home = () => {
     <>
       <section className="bg-light pt-6 pt-md-7">
         <div className="container text-center">
-          <div className="fx-fade-up animation-delay-1">
+          <div className="fx-fade-up animation-delay-1" style={{height: "500px"}}>
             <h1 className="display-4 text-darkblue">Rebase Blockchain Tech Community</h1>
             <p className="w-lg-80 lead text-secondary mx-auto mt-4 mb-5">
               Rebase is a non-profit developer community founded by a group of Chinese Web3 developers.

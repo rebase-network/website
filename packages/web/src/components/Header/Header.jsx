@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuthContext } from '../../context/AuthContext';
+import { useAuthContext } from '/src/context/AuthContext';
 
 import logo from '/public/assets/img/rebase.png';
 
