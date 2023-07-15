@@ -6,8 +6,7 @@ import { Form, Input, Select, Upload, Radio } from "antd";
 import { TOKEN_KEY, API_URL } from "../../constants";
 import { IPost } from "../../interfaces";
 
-export const PostCreate: React.FC = () => {
-
+export const GeekdailyCreate: React.FC = () => {
 
     const { formProps, saveButtonProps } = useForm<IPost>();
 
@@ -48,8 +47,8 @@ export const PostCreate: React.FC = () => {
                     <Select {...selectProps} />
                 </Form.Item>
                 <Form.Item
-                    label="Content"
-                    name="content"
+                    label="Introduce"
+                    name="introduce"
                     rules={[
                         {
                             required: true,
@@ -66,7 +65,7 @@ export const PostCreate: React.FC = () => {
                     >
                         <Upload.Dragger
                             name="files"
-                            action={`${API_URL}/api/upload`}
+                            action={`${API_URL}/api/v1/upload`}
                             headers={{
                                 Authorization: `Bearer ${localStorage.getItem(
                                     TOKEN_KEY,

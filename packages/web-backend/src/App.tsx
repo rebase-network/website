@@ -27,7 +27,7 @@ import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 
 import "@refinedev/antd/dist/reset.css";
 
-import { PostList, PostCreate, PostEdit, PostShow } from "../src/pages/posts";
+import { GeekdailyList, GeekdailyCreate, GeekdailyEdit, GeekdailyShow } from "../src/pages/geekdailies";
 
 import { UserList } from "../src/pages/users";
 
@@ -146,11 +146,11 @@ const App: React.FC = () => {
                     routerProvider={routerProvider}
                     resources={[
                         {
-                            name: "posts",
-                            list: "/posts",
-                            create: "/posts/create",
-                            edit: "/posts/edit/:id",
-                            show: "/posts/show/:id",
+                            name: "geekdailies",
+                            list: "/geekdailies",
+                            create: "/geekdailies/create",
+                            edit: "/geekdailies/edit/:id",
+                            show: "/geekdailies/show/:id",
                             meta: {
                                 canDelete: true,
                             },
@@ -187,15 +187,15 @@ const App: React.FC = () => {
                             <Route
                                 index
                                 element={
-                                    <NavigateToResource resource="posts" />
+                                    <NavigateToResource resource="geekdailies" />
                                 }
                             />
 
-                            <Route path="/posts">
-                                <Route index element={<PostList />} />
-                                <Route path="create" element={<PostCreate />} />
-                                <Route path="edit/:id" element={<PostEdit />} />
-                                <Route path="show/:id" element={<PostShow />} />
+                            <Route path="/geekdailies">
+                                <Route index element={<GeekdailyList />} />
+                                <Route path="create" element={<GeekdailyCreate />} />
+                                <Route path="edit/:id" element={<GeekdailyEdit />} />
+                                <Route path="show/:id" element={<GeekdailyShow />} />
                             </Route>
 
                             <Route path="/categories">
@@ -216,7 +216,7 @@ const App: React.FC = () => {
                         <Route
                             element={
                                 <Authenticated fallback={<Outlet />}>
-                                    <NavigateToResource resource="posts" />
+                                    <NavigateToResource resource="geekdailies" />
                                 </Authenticated>
                             }
                         >

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { IResourceComponentsProps } from "@refinedev/core";
 
 import {
@@ -14,15 +13,13 @@ import {
     ShowButton,
 } from "@refinedev/antd";
 
-import { Table, Select, Space, Form, Radio, Tag } from "antd";
+import { Table, Select, Space } from "antd";
 
 import { IPost } from "../../interfaces";
 
 import { API_URL } from "../../constants";
 
-export const PostList: React.FC<IResourceComponentsProps> = () => {
-
-    const [publicationState, setPublicationState] = useState("live");
+export const GeekdailyList: React.FC<IResourceComponentsProps> = () => {
 
     const { tableProps, sorter } = useTable<IPost>({
         initialSorter: [
@@ -33,7 +30,6 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
         ],
         metaData: {
             populate: ["category", "cover"],
-            publicationState,
         },
     });
 
@@ -46,24 +42,6 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
 
     return (
         <List>
-            <Form
-                layout="inline"
-                initialValues={{
-                    publicationState,
-                }}
-            >
-                <Form.Item label="Publication State" name="publicationState">
-                    <Radio.Group
-                        onChange={(e) => setPublicationState(e.target.value)}
-                    >
-                        <Radio.Button value="live">Published</Radio.Button>
-                        <Radio.Button value="preview">
-                            Draft and Published
-                        </Radio.Button>
-                    </Radio.Group>
-                </Form.Item>
-            </Form>
-            <br />
             <Table
                 {...tableProps}
                 rowKey="id"
@@ -77,14 +55,23 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                     key="id"
                     title="ID"
                     defaultSortOrder={getDefaultSortOrder("id", sorter)}
-                    sorter={{ multiple: 3 }}
+                    sorter={{ multiple: 2 }}
+                />
+                <Table.Column
+                    dataIndex="episode"
+                    key="episode"
+                    title="episode"
                 />
                 <Table.Column
                     dataIndex="title"
                     key="title"
                     title="Title"
-                    defaultSortOrder={getDefaultSortOrder("title", sorter)}
-                    sorter={{ multiple: 2 }}
+                />
+
+                <Table.Column
+                    dataIndex="author"
+                    key="author"
+                    title="author"
                 />
                 <Table.Column
                     key="[category][id]"
@@ -108,28 +95,19 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                     defaultSortOrder={getDefaultSortOrder("createdAt", sorter)}
                     sorter={{ multiple: 1 }}
                 />
-                <Table.Column
-                    dataIndex="publishedAt"
-                    title="Status"
-                    render={(value) => {
-                        return (
-                            <Tag color={value ? "green" : "blue"}>
-                                {value ? "Published" : "Draft"}
-                            </Tag>
-                        );
-                    }}
-                />
+
                 <Table.Column
                     dataIndex={"cover"}
                     align="center"
                     title="Cover"
                     render={(value) => {
+
                         return value ? (
                             <ImageField
-                                value={API_URL + value[0].url}
-                                alt={value[0]?.name}
-                                title={value[0]?.name}
-                                width={48}
+                                value={API_URL + value.formats.small.url}
+                                alt={value?.name}
+                                title={value?.name}
+                                width={80}
                                 preview={{ mask: <></> }}
                             />
                         ) : (

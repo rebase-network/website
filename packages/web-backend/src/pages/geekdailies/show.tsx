@@ -16,7 +16,7 @@ import { API_URL } from "../../constants";
 
 const { Title, Text } = Typography;
 
-export const PostShow: React.FC<IResourceComponentsProps> = () => {
+export const GeekdailyShow: React.FC<IResourceComponentsProps> = () => {
     const { queryResult } = useShow<IPost>({
         metaData: { populate: ["category", "cover"] },
     });
@@ -36,6 +36,8 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
     const handleRefresh = () => {
         queryResult.refetch();
     };
+
+    console.log(record?.cover)
 
     return (
         <Show
@@ -61,21 +63,17 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
                 {categoryIsLoading ? "Loading..." : categoryData?.data?.title}
             </Text>
 
-            <Title level={5}>Content</Title>
-            <MarkdownField value={record?.content} />
+            <Title level={5}>Introduce</Title>
+            <MarkdownField value={record?.introduce} />
 
-            <Title level={5}>Images</Title>
+            <Title level={5}>Image</Title>
             <Space wrap>
+
                 {record?.cover ? (
-                    record?.cover.map((attributes) => {
-                        return (
-                            <ImageField
-                                key={attributes.id}
-                                value={`${API_URL}${attributes.url}`}
-                                width={200}
-                            />
-                        );
-                    })
+                    <ImageField
+                        value={`${API_URL}${record?.cover.formats.medium.url}`}
+                        width={200}
+                    />
                 ) : (
                     <Text>Not found any images</Text>
                 )}
