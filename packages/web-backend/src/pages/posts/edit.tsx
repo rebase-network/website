@@ -14,7 +14,7 @@ export const PostEdit: React.FC = () => {
     const { selectProps } = useSelect<ICategory>({
         resource: "categories",
         defaultValue: queryResult?.data?.data?.category?.id,
-        metaData: { locale: queryResult?.data?.data.locale },
+        metaData: {  },
     });
 
     return (
@@ -26,12 +26,7 @@ export const PostEdit: React.FC = () => {
                     formProps.onFinish?.(mediaUploadMapper(values));
                 }}
             >
-                <Form.Item label="Locale" name="locale">
-                    <Radio.Group disabled>
-                        <Radio.Button value="en">English</Radio.Button>
-                        <Radio.Button value="de">Deutsch</Radio.Button>
-                    </Radio.Group>
-                </Form.Item>
+
                 <Form.Item
                     wrapperCol={{ span: 14 }}
                     label="Title"

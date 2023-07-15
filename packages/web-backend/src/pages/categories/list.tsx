@@ -14,23 +14,17 @@ import { Table, Space, Form, Radio } from "antd";
 import { ICategory } from "../../interfaces";
 
 export const CategoryList: React.FC<IResourceComponentsProps> = () => {
-    const [locale, setLocale] = useState("en");
 
     const { tableProps } = useTable<ICategory>({
         metaData: {
-            locale,
+
         },
     });
 
     return (
         <List>
-            <Form layout="inline" initialValues={{ locale }}>
-                <Form.Item label="Locale" name="locale">
-                    <Radio.Group onChange={(e) => setLocale(e.target.value)}>
-                        <Radio.Button value="en">English</Radio.Button>
-                        <Radio.Button value="de">Deutsch</Radio.Button>
-                    </Radio.Group>
-                </Form.Item>
+            <Form layout="inline" initialValues={{ }}>
+
             </Form>
             <br />
             <Table {...tableProps} rowKey="id">

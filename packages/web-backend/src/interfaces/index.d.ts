@@ -8,7 +8,6 @@ export interface IPost {
     title: string;
     category: ICategory;
     content: string;
-    locale: string;
     createdAt: string;
     cover: {
         id: number;

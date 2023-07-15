@@ -21,7 +21,7 @@ import { IPost } from "../../interfaces";
 import { API_URL } from "../../constants";
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {
-    const [locale, setLocale] = useState("en");
+
     const [publicationState, setPublicationState] = useState("live");
 
     const { tableProps, sorter } = useTable<IPost>({
@@ -33,7 +33,6 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
         ],
         metaData: {
             populate: ["category", "cover"],
-            locale,
             publicationState,
         },
     });
@@ -42,7 +41,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
         resource: "categories",
         optionLabel: "title",
         optionValue: "id",
-        metaData: { locale },
+        metaData: {  },
     });
 
     return (
@@ -50,16 +49,9 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
             <Form
                 layout="inline"
                 initialValues={{
-                    locale,
                     publicationState,
                 }}
             >
-                <Form.Item label="Locale" name="locale">
-                    <Radio.Group onChange={(e) => setLocale(e.target.value)}>
-                        <Radio.Button value="en">English</Radio.Button>
-                        <Radio.Button value="de">Deutsch</Radio.Button>
-                    </Radio.Group>
-                </Form.Item>
                 <Form.Item label="Publication State" name="publicationState">
                     <Radio.Group
                         onChange={(e) => setPublicationState(e.target.value)}

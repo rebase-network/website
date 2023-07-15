@@ -7,13 +7,13 @@ import { TOKEN_KEY, API_URL } from "../../constants";
 import { IPost } from "../../interfaces";
 
 export const PostCreate: React.FC = () => {
-    const [locale, setLocale] = useState("en");
+
 
     const { formProps, saveButtonProps } = useForm<IPost>();
 
     const { selectProps } = useSelect({
         resource: "categories",
-        metaData: { locale },
+        metaData: {  },
     });
 
     return (
@@ -25,12 +25,6 @@ export const PostCreate: React.FC = () => {
                     formProps.onFinish?.(mediaUploadMapper(values));
                 }}
             >
-                <Form.Item label="Locale" name="locale">
-                    <Radio.Group onChange={(e) => setLocale(e.target.value)}>
-                        <Radio.Button value="en">English</Radio.Button>
-                        <Radio.Button value="de">Deutsch</Radio.Button>
-                    </Radio.Group>
-                </Form.Item>
                 <Form.Item
                     label="Title"
                     name="title"
