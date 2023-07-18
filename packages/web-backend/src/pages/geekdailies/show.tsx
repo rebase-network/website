@@ -11,13 +11,13 @@ import {
 
 import { Space, Typography } from "antd";
 
-import { IPost, ICategory } from "../../interfaces";
+import { IGeekDaily, ICategory } from "../../interfaces";
 import { API_URL } from "../../constants";
 
 const { Title, Text } = Typography;
 
 export const GeekdailyShow: React.FC<IResourceComponentsProps> = () => {
-    const { queryResult } = useShow<IPost>({
+    const { queryResult } = useShow<IGeekDaily>({
         metaData: { populate: ["category", "cover"] },
     });
 
