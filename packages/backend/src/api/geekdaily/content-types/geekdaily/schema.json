@@ -30,22 +30,10 @@
     "introduce": {
       "type": "text"
     },
-    "cover": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false
-    },
     "editor": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::editor.editor"
-    },
-    "category": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category"
     }
   }
 }
