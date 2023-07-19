@@ -4,10 +4,8 @@ import App from './App.jsx';
 
 import Home from './pages/home/Home';
 import Signin from './pages/signin/Signin';
-import Profile from './pages/user/Profile.jsx';
+import Profile from './pages/user/Profile';
 import GeekDaily from './pages/geekdaily/GeekDaily';
-
-import AdminCreateGeekDaily from './pages/admin/geekdaily/Create';
 
 const RouterLink = () => {
   return (
@@ -18,7 +16,6 @@ const RouterLink = () => {
           <Route path="/signin" element={<Signin />} />
           <Route path="/geekdaily" element={<GeekDaily />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/admin/geekDaily/create" element={<AdminCreateGeekDaily />} />
         </Routes>
       </App>
     </Router>
