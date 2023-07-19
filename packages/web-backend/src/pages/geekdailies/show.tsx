@@ -1,83 +1,52 @@
-import { useShow, IResourceComponentsProps, useOne } from "@refinedev/core";
+import { useShow, IResourceComponentsProps, useOne } from '@refinedev/core';
 
-import {
-    Show,
-    MarkdownField,
-    ListButton,
-    EditButton,
-    RefreshButton,
-    ImageField,
-} from "@refinedev/antd";
+import { Show, MarkdownField, ListButton, EditButton, RefreshButton, ImageField } from '@refinedev/antd';
 
-import { Space, Typography } from "antd";
+import { Space, Typography } from 'antd';
 
-import { IGeekDaily, ICategory } from "../../interfaces";
-import { API_URL } from "../../constants";
+import { IGeekDaily, ICategory } from '../../interfaces';
+import { API_URL } from '../../constants';
 
 const { Title, Text } = Typography;
 
 export const GeekdailyShow: React.FC<IResourceComponentsProps> = () => {
-    const { queryResult } = useShow<IGeekDaily>({
-        metaData: { populate: ["category", "cover"] },
-    });
+  const { queryResult } = useShow<IGeekDaily>({
+  });
 
-    const { data, isLoading } = queryResult;
-    const record = data?.data;
+  const { data, isLoading } = queryResult;
+  const record = data?.data;
 
-    const { data: categoryData, isLoading: categoryIsLoading } =
-        useOne<ICategory>({
-            resource: "categories",
-            id: record?.category?.id || "",
-            queryOptions: {
-                enabled: !!record,
-            },
-        });
+  const handleRefresh = () => {
+    queryResult.refetch();
+  };
 
-    const handleRefresh = () => {
-        queryResult.refetch();
-    };
+  return (
+    <Show
+      isLoading={isLoading}
+      headerProps={{
+        extra: (
+          <>
+            <ListButton />
+            <EditButton />
+            <RefreshButton onClick={handleRefresh} />
+          </>
+        ),
+      }}
+    >
+      <Title level={5}>Id</Title>
+      <Text>{record?.id}</Text>
 
-    console.log(record?.cover)
+      <Title level={5}>Episode</Title>
+      <Text>{record?.episode}</Text>
 
-    return (
-        <Show
-            isLoading={isLoading}
-            headerProps={{
-                extra: (
-                    <>
-                        <ListButton />
-                        <EditButton />
-                        <RefreshButton onClick={handleRefresh} />
-                    </>
-                ),
-            }}
-        >
-            <Title level={5}>Id</Title>
-            <Text>{record?.id}</Text>
+      <Title level={5}>Title</Title>
+      <Text>{record?.title}</Text>
 
-            <Title level={5}>Title</Title>
-            <Text>{record?.title}</Text>
+      <Title level={5}>Url</Title>
+      <Text>{record?.url}</Text>
 
-            <Title level={5}>Category</Title>
-            <Text>
-                {categoryIsLoading ? "Loading..." : categoryData?.data?.title}
-            </Text>
-
-            <Title level={5}>Introduce</Title>
-            <MarkdownField value={record?.introduce} />
-
-            <Title level={5}>Image</Title>
-            <Space wrap>
-
-                {record?.cover ? (
-                    <ImageField
-                        value={`${API_URL}${record?.cover.formats.medium.url}`}
-                        width={200}
-                    />
-                ) : (
-                    <Text>Not found any images</Text>
-                )}
-            </Space>
-        </Show>
-    );
+      <Title level={5}>Introduce</Title>
+      <MarkdownField value={record?.introduce} />
+    </Show>
+  );
 };

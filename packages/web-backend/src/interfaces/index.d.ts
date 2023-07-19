@@ -2,7 +2,7 @@ export interface ICategory {
   id: string;
   title: string;
   desc: string;
-  slug: string;
+  createdAt: string;
 }
 
 interface Formats {
@@ -44,11 +44,9 @@ interface Cover {
 
 export interface IPost {
   id: string;
-  episode: string;
   title: string;
-  url: string;
   author: string;
-  introduce: string;
+  content: string;
   cover: Cover;
   createdAt: string;
   category: ICategory;
@@ -62,5 +60,4 @@ export interface IGeekDaily {
   author: string;
   introduce: string;
   createdAt: string;
-  category: ICategory;
 }

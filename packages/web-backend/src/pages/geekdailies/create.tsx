@@ -25,7 +25,6 @@ export const GeekdailyCreate: React.FC = () => {
             author: items.author1,
             title: items.title1,
             url: items.url1,
-            category: items.category1,
             introduce: items.introduce1,
           },
           {
@@ -33,7 +32,6 @@ export const GeekdailyCreate: React.FC = () => {
             author: items.author2,
             title: items.title2,
             url: items.url2,
-            category: items.category2,
             introduce: items.introduce2,
           },
           {
@@ -41,7 +39,6 @@ export const GeekdailyCreate: React.FC = () => {
             author: items.author3,
             title: items.title3,
             url: items.url3,
-            category: items.category3,
             introduce: items.introduce3,
           },
         ],
@@ -92,10 +89,6 @@ export const GeekdailyCreate: React.FC = () => {
           </Col>
         </Row>
 
-        <Form.Item label="Category" name="category1" rules={[{ required: true }]}>
-          <Select placeholder="Select a category" {...selectProps} />
-        </Form.Item>
-
         <Form.Item label="Introduce" name="introduce1" rules={[{ required: true }]}>
           <TextArea rows={4} />
         </Form.Item>
@@ -104,29 +97,25 @@ export const GeekdailyCreate: React.FC = () => {
 
         <Row justify="space-between">
           <Col span={6}>
-            <Form.Item label="Author" name="author2" rules={[{ required: true }]}>
+            <Form.Item label="Author" name="author2" rules={[{ required: false }]}>
               <Input />
             </Form.Item>
           </Col>
 
           <Col span={6}>
-            <Form.Item label="Title" name="title2" rules={[{ required: true }]}>
+            <Form.Item label="Title" name="title2" rules={[{ required: false }]}>
               <Input />
             </Form.Item>
           </Col>
 
           <Col span={6}>
-            <Form.Item label="Url" name="url2" rules={[{ required: true }]}>
+            <Form.Item label="Url" name="url2" rules={[{ required: false }]}>
               <Input />
             </Form.Item>
           </Col>
         </Row>
 
-        <Form.Item label="Category" name="category2" rules={[{ required: true }]}>
-          <Select placeholder="Select a category" {...selectProps} />
-        </Form.Item>
-
-        <Form.Item label="Introduce" name="introduce2" rules={[{ required: true }]}>
+        <Form.Item label="Introduce" name="introduce2" rules={[{ required: false }]}>
           <TextArea rows={4} />
         </Form.Item>
 
@@ -134,29 +123,25 @@ export const GeekdailyCreate: React.FC = () => {
 
         <Row justify="space-between">
           <Col span={6}>
-            <Form.Item label="Author" name="author3" rules={[{ required: true }]}>
+            <Form.Item label="Author" name="author3" rules={[{ required: false }]}>
               <Input />
             </Form.Item>
           </Col>
 
           <Col span={6}>
-            <Form.Item label="Title" name="title3" rules={[{ required: true }]}>
+            <Form.Item label="Title" name="title3" rules={[{ required: false }]}>
               <Input />
             </Form.Item>
           </Col>
 
           <Col span={6}>
-            <Form.Item label="Url" name="url3" rules={[{ required: true }]}>
+            <Form.Item label="Url" name="url3" rules={[{ required: false }]}>
               <Input />
             </Form.Item>
           </Col>
         </Row>
 
-        <Form.Item label="Category" name="category3" rules={[{ required: true }]}>
-          <Select placeholder="Select a category" {...selectProps} />
-        </Form.Item>
-
-        <Form.Item label="Introduce" name="introduce3" rules={[{ required: true }]}>
+        <Form.Item label="Introduce" name="introduce3" rules={[{ required: false }]}>
           <TextArea rows={4} />
         </Form.Item>
       </Form>

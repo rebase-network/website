@@ -10,13 +10,7 @@ export const GeekdailyEdit: React.FC = () => {
   const { TextArea } = Input;
 
   const { formProps, saveButtonProps, queryResult } = useForm<IGeekDaily>({
-    metaData: { populate: ['category'] },
-  });
-
-  const { selectProps } = useSelect<ICategory>({
-    resource: 'categories',
-    defaultValue: queryResult?.data?.data?.category?.id,
-    metaData: {},
+    // metaData: { populate: ['category'] },
   });
 
   return (
@@ -69,19 +63,6 @@ export const GeekdailyEdit: React.FC = () => {
           ]}
         >
           <Input />
-        </Form.Item>
-
-        <Form.Item
-          wrapperCol={{ span: 8 }}
-          label="Category"
-          name={['category', 'id']}
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        >
-          <Select {...selectProps} />
         </Form.Item>
 
         <Form.Item
