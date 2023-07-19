@@ -1,29 +1,29 @@
-import { IResourceComponentsProps } from "@refinedev/core";
+import { IResourceComponentsProps } from '@refinedev/core';
 
-import { Create, useForm } from "@refinedev/antd";
+import { Create, useForm } from '@refinedev/antd';
 
-import { Form, Input, Radio } from "antd";
+import { Form, Input, Radio } from 'antd';
 
-import { ICategory } from "../../interfaces";
+import { ICategory } from '../../interfaces';
 
 export const CategoryCreate: React.FC<IResourceComponentsProps> = () => {
-    const { formProps, saveButtonProps } = useForm<ICategory>();
+  const { formProps, saveButtonProps } = useForm<ICategory>();
 
-    return (
-        <Create saveButtonProps={saveButtonProps}>
-            <Form {...formProps} layout="vertical">
-                <Form.Item
-                    label="Title"
-                    name="title"
-                    rules={[
-                        {
-                            required: true,
-                        },
-                    ]}
-                >
-                    <Input />
-                </Form.Item>
-            </Form>
-        </Create>
-    );
+  return (
+    <Create saveButtonProps={saveButtonProps}>
+      <Form {...formProps} layout="vertical">
+        <Form.Item
+          label="Title"
+          name="title"
+          rules={[
+            {
+              required: true,
+            },
+          ]}
+        >
+          <Input />
+        </Form.Item>
+      </Form>
+    </Create>
+  );
 };

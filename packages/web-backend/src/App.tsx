@@ -23,6 +23,7 @@ import { ConfigProvider } from 'antd';
 import { GithubFilled } from '@ant-design/icons';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 
+import { PostList, PostCreate, PostEdit, PostShow } from '../src/pages/posts';
 import { GeekdailyList, GeekdailyCreate, GeekdailyEdit, GeekdailyShow } from '../src/pages/geekdailies';
 
 import { UserList } from '../src/pages/users';
@@ -145,6 +146,16 @@ const App: React.FC = () => {
           routerProvider={routerProvider}
           resources={[
             {
+              name: 'posts',
+              list: '/posts',
+              create: '/posts/create',
+              edit: '/posts/edit/:id',
+              show: '/posts/show/:id',
+              meta: {
+                canDelete: true,
+              },
+            },
+            {
               name: 'geekdailies',
               list: '/geekdailies',
               create: '/geekdailies/create',
@@ -181,8 +192,15 @@ const App: React.FC = () => {
                 </Authenticated>
               }
             >
-              <Route index element={<NavigateToResource resource="geekdailies" />} />
+              <Route index element={<NavigateToResource resource="posts" />} />
+              <Route path="/posts">
+                <Route index element={<PostList />} />
+                <Route path="create" element={<PostCreate />} />
+                <Route path="edit/:id" element={<PostEdit />} />
+                <Route path="show/:id" element={<PostShow />} />
+              </Route>
 
+              <Route index element={<NavigateToResource resource="geekdailies" />} />
               <Route path="/geekdailies">
                 <Route index element={<GeekdailyList />} />
                 <Route path="create" element={<GeekdailyCreate />} />
