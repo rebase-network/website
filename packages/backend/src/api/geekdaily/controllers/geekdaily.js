@@ -34,6 +34,7 @@ module.exports = createCoreController('api::geekdaily.geekdaily', ({ strapi }) =
 
     const queryParams = {
       fields: ['title', 'episode', 'author', 'url', 'time', 'introduce'],
+      sort: { time: 'desc' },
       populate: {
         cover: {
           fields: ['url'],
