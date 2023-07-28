@@ -15,32 +15,6 @@ export default function GeekDaily() {
 
   return (
     <>
-      <section className="sticky-top bg-white shadow-light-sm py-4">
-        <div className="container d-flex flex-column flex-lg-row">
-          <div className="d-none d-md-flex align-items-center flex-wrap text-uppercase font-size-xs">
-            <span className="font-size-sm font-weight-bold mr-4">Categories:</span>
-
-            {!!categories &&
-              categories.data.map((item, key) => (
-                <a href="#" key={key} className="text-secondary mr-4">
-                  {item.attributes.title}
-                </a>
-              ))}
-          </div>
-
-          <form className="w-200 mt-md-3 mt-lg-0 ml-lg-auto">
-            <div className="position-relative">
-              <i className="fas fa-search fa-sm text-muted position-absolute left-0 top-0 mt-2"></i>
-              <input
-                type="text"
-                className="form-control form-control-sm pl-4 border-0"
-                placeholder="Search on the blog"
-              />
-            </div>
-          </form>
-        </div>
-      </section>
-
       <section className="fx-fade-up">
         <div className="container">
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
@@ -48,11 +22,6 @@ export default function GeekDaily() {
               dails.data.map((item) => (
                 <div className="col mt-5">
                   <div className="card h-100 shadow-light hover-lift-light">
-                    <a
-                      href="#!"
-                      className="bg-cover h-250 rounded-top"
-                      style={{ backgroundImage: `url('${!!item.cover && API_DOMAIN + item.cover.url}')` }}
-                    ></a>
 
                     <div className="card-body">
                       <a href="#!" className="h5 font-weight-normal text-dark text-decoration-none">
