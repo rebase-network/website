@@ -18,11 +18,6 @@
     "desc": {
       "type": "string"
     },
-    "geekdailies": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::geekdaily.geekdaily"
-    },
     "posts": {
       "type": "relation",
       "relation": "oneToMany",
