@@ -16,13 +16,13 @@
       "type": "string"
     },
     "title": {
-      "type": "string"
+      "type": "text"
     },
     "author": {
       "type": "string"
     },
     "url": {
-      "type": "string"
+      "type": "text"
     },
     "time": {
       "type": "date"
