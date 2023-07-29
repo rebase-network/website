@@ -10,8 +10,19 @@ export default function GeekDaily() {
   const geekdailiesresult = useData(geekdailiesurl);
   const dails = geekdailiesresult.data;
 
-  const categoriesurlresult = useData(categoriesurl);
-  const categories = categoriesurlresult.data;
+  const avatarImg = (editor) => {
+    if (editor && editor.avatar) {
+      return (
+        <div className="avatar avatar-sm">
+          <img
+            src={API_DOMAIN + editor.avatar.url}
+            className="avatar-image rounded-circle"
+            alt={editor.name}
+          />
+        </div>
+      )
+    }
+  };
 
   return (
     <>
@@ -24,21 +35,15 @@ export default function GeekDaily() {
                   <div className="card h-100 shadow-light hover-lift-light">
 
                     <div className="card-body">
-                      <a href="#!" className="h5 font-weight-normal text-dark text-decoration-none">
+                      <a href={item.url} target='_blank' className="h5 font-weight-normal text-dark text-decoration-none">
                         {item.title}
                       </a>
 
-                      <p className="text-secondary font-size-sm mt-3">{item.introduce}</p>
+                      <p className="text-secondary font-size-sm mt-3">{item.author}：{item.introduce}</p>
                     </div>
 
                     <div className="card-bottom-info">
-                      <div className="avatar avatar-sm">
-                        <img
-                          src={`${!!item.editor && API_DOMAIN + item.editor.avatar.url}`}
-                          className="avatar-image rounded-circle"
-                          alt=""
-                        />
-                      </div>
+                      {avatarImg(item.editor)}
                       <span className="text-uppercase-xs text-muted ml-2">{!!item.editor && item.editor.name}</span>
                       <div className="text-uppercase-xs text-muted ml-auto">
                         <i className="far fa-calendar fa-xs relative-top--1"></i>
