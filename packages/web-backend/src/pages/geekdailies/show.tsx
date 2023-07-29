@@ -45,6 +45,9 @@ export const GeekdailyShow: React.FC<IResourceComponentsProps> = () => {
       <Title level={5}>Url</Title>
       <Text>{record?.url}</Text>
 
+      <Title level={5}>Time</Title>
+      <Text>{record?.time}</Text>
+
       <Title level={5}>Introduce</Title>
       <MarkdownField value={record?.introduce} />
     </Show>

@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import React, { useState } from 'react';
 import { useCreateMany } from '@refinedev/core';
 
@@ -16,6 +17,9 @@ export const GeekdailyCreate: React.FC = () => {
   const { mutate } = useCreateMany();
 
   const bulkInsert = (items: any) => {
+
+    const currDate = dayjs().format("YYYY-MM-DD");
+
     mutate(
       {
         resource: 'geekdailies',
@@ -25,6 +29,7 @@ export const GeekdailyCreate: React.FC = () => {
             author: items.author1,
             title: items.title1,
             url: items.url1,
+            time: currDate,
             introduce: items.introduce1,
           },
           {
@@ -32,6 +37,7 @@ export const GeekdailyCreate: React.FC = () => {
             author: items.author2,
             title: items.title2,
             url: items.url2,
+            time: currDate,
             introduce: items.introduce2,
           },
           {
@@ -39,13 +45,14 @@ export const GeekdailyCreate: React.FC = () => {
             author: items.author3,
             title: items.title3,
             url: items.url3,
+            time: currDate,
             introduce: items.introduce3,
           },
         ],
       },
 
       {
-        onSuccess: () => {},
+        onSuccess: () => { },
       },
     );
   };

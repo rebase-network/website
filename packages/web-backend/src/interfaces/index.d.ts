@@ -57,6 +57,7 @@ export interface IGeekDaily {
   episode: string;
   title: string;
   url: string;
+  time: Date;
   author: string;
   introduce: string;
   createdAt: string;
