@@ -72,11 +72,12 @@ export default function Header() {
                 </li>
               </>
             ) : (
-              <li className="nav-item ml-lg-3 mt-3 mt-lg-0">
-                <a className="btn btn-sm btn-primary hover-lift-light mt-1" href="/signin" target="_blank">
-                  Sign in
-                </a>
-              </li>
+              <></>
+              // <li className="nav-item ml-lg-3 mt-3 mt-lg-0">
+              //   <a className="btn btn-sm btn-primary hover-lift-light mt-1" href="/signin" target="_blank">
+              //     Sign in
+              //   </a>
+              // </li>
             )}
           </ul>
         </div>

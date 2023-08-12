@@ -34,13 +34,10 @@ const Footer = ()=>{
 
           <div className="col-12 col-md mt-5 mt-md-0">
             <h6 className="footer-header mb-4 pb-2">
-              Information
+              Contact
             </h6>
-            <a href="#" className="footer-link font-size-normal">
-              +1 555 555 555
-            </a>
             <a href="#" className="footer-link font-size-normal mt-2">
-              info@themes.com
+              admin@rebase.community
             </a>
           </div>
         </div>
