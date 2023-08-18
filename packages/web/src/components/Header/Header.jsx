@@ -57,6 +57,12 @@ export default function Header() {
               </a>
             </li>
 
+            <li className="nav-item ml-lg-3 mt-3 mt-lg-0">
+              <a className="btn btn-sm btn-primary hover-lift-light mt-1" href="http://old.rebase.network/" target="_blank">
+                Original Rebase Website
+              </a>
+            </li>
+
             {user ? (
               <>
                 <li className="nav-item ml-lg-3 mt-3 mt-lg-0">
