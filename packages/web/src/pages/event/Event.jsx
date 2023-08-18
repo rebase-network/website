@@ -2,32 +2,17 @@ import React from 'react';
 import { useData } from '/src/utils/utils.js';
 import { API, API_DOMAIN } from '/src/constant';
 
-export default function Job() {
+export default function Event() {
 
-  const joburl = API + '/jobs';
+  const joburl = API + '/events';
 
-  const jobsresult = useData(joburl);
-  const items = jobsresult.data;
+  const eventsresult = useData(joburl);
+  const items = eventsresult.data;
 
   return (
     <>
       <section className="mt-8 mt-lg-2 bg-light">
         <div className="container">
-
-          <div className="d-flex flex-column flex-md-row align-items-center mb-5">
-            <div className="text-center text-md-left">
-              <h4>
-                Featured recent Jobs
-              </h4>
-              <p className="text-muted">
-                These jobs might be of your interest.
-              </p>
-            </div>
-            <a href="https://github.com/rebase-network/who-is-hiring/issues/" target="_blank" className="ml-md-auto" >
-              See all jobs
-              <i className="fa fa-arrow-right fa-xs ml-2"></i>
-            </a>
-          </div>
 
           {!!items &&
             items.data.map((item) => (

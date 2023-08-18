@@ -7,6 +7,7 @@ import Signin from './pages/signin/Signin';
 import Profile from './pages/user/Profile';
 import GeekDaily from './pages/geekdaily/GeekDaily';
 import Job from './pages/job/Job';
+import Event from './pages/event/Event';
 
 const RouterLink = () => {
   return (
@@ -16,6 +17,7 @@ const RouterLink = () => {
           <Route path="/" element={<Home />} />
           <Route path="/geekdaily" element={<GeekDaily />} />
           <Route path="/job" element={<Job />} />
+          <Route path="/event" element={<Event />} />
           <Route path="/signin" element={<Signin />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
