@@ -6,6 +6,7 @@ import Home from './pages/home/Home';
 import Signin from './pages/signin/Signin';
 import Profile from './pages/user/Profile';
 import GeekDaily from './pages/geekdaily/GeekDaily';
+import Job from './pages/job/Job';
 
 const RouterLink = () => {
   return (
@@ -13,8 +14,9 @@ const RouterLink = () => {
       <App>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signin" element={<Signin />} />
           <Route path="/geekdaily" element={<GeekDaily />} />
+          <Route path="/job" element={<Job />} />
+          <Route path="/signin" element={<Signin />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
       </App>
