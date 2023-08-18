@@ -1,5 +1,8 @@
 import React from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Collapse } from 'bootstrap';
+
 import { useAuthContext } from '/src/context/AuthContext';
 
 import logo from '/public/assets/img/rebase.png';
@@ -8,6 +11,15 @@ export default function Header() {
   const { user } = useAuthContext();
   const navigate = useNavigate();
 
+  const [toggle, setToggle] = useState(false)
+  const collapseRef = useRef();
+
+  useEffect(() => {
+    const myCollapse = collapseRef.current;
+    const bsCollapse = new Collapse(myCollapse, { toggle: false });
+    toggle ? bsCollapse.show() : bsCollapse.hide();
+  })
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white" role="navigation">
       <div className="container position-relative">
@@ -15,11 +27,11 @@ export default function Header() {
           <img height="40px" src={logo} />
         </a>
 
-        <button className="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+        <button className="navbar-toggler" onClick={() => setToggle(toggle => !toggle)}>
           <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div className="collapse navbar-collapse justify-content-end mt-2 mt-lg-0">
+        <div ref={collapseRef} className="collapse navbar-collapse justify-content-end mt-2 mt-lg-0">
           <ul className="navbar-nav">
             <li className="nav-item">
               <a className="nav-link" href="/">
