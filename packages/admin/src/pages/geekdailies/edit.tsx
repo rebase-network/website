@@ -3,8 +3,7 @@ import { Edit, useForm, useSelect } from '@refinedev/antd';
 import { getValueProps } from '@refinedev/strapi-v4';
 import { Form, Input, Select } from 'antd';
 
-import { TOKEN_KEY, API_URL } from '../../constants';
-import { ICategory, IGeekDaily } from '../../interfaces';
+import { IGeekDaily } from '../../interfaces';
 
 export const GeekdailyEdit: React.FC = () => {
   const { TextArea } = Input;

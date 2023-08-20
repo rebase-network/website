@@ -5,7 +5,7 @@ import { Show, MarkdownField, ListButton, EditButton, RefreshButton, ImageField 
 import { Space, Typography } from 'antd';
 
 import { IPost, ICategory } from '../../interfaces';
-import { API_URL } from '../../constants';
+import { DOMAIN } from '../../constants';
 
 const { Title, Text } = Typography;
 
@@ -59,7 +59,7 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
       <Title level={5}>Image</Title>
       <Space wrap>
         {record?.cover ? (
-          <ImageField value={`${API_URL}${record?.cover.formats.medium.url}`} width={200} />
+          <ImageField value={`${DOMAIN}${record?.cover.formats.medium.url}`} width={200} />
         ) : (
           <Text>Not found any images</Text>
         )}

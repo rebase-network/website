@@ -6,7 +6,6 @@ import { getValueProps } from '@refinedev/strapi-v4';
 import { Create, useForm, useSelect } from '@refinedev/antd';
 import { Form, Input, Select, Col, Row, Divider } from 'antd';
 
-import { TOKEN_KEY, API_URL } from '../../constants';
 import { IGeekDaily } from '../../interfaces';
 
 export const GeekdailyCreate: React.FC = () => {

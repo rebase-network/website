@@ -17,8 +17,6 @@ import { Table, Select, Space } from 'antd';
 
 import { IGeekDaily } from '../../interfaces';
 
-import { API_URL } from '../../constants';
-
 export const GeekdailyList: React.FC<IResourceComponentsProps> = () => {
   const { tableProps, sorter } = useTable<IGeekDaily>({
     initialSorter: [

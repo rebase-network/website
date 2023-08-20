@@ -16,7 +16,7 @@ import {
 import { Table, Select, Space } from 'antd';
 
 import { IPost } from '../../interfaces';
-import { API_URL } from '../../constants';
+import { DOMAIN } from '../../constants';
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {
   const { tableProps, sorter } = useTable<IPost>({
@@ -84,7 +84,7 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
           render={(value) => {
             return value ? (
               <ImageField
-                value={API_URL + value.formats.small.url}
+                value={DOMAIN + value.formats.small.url}
                 alt={value?.name}
                 title={value?.name}
                 width={80}

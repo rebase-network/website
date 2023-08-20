@@ -3,7 +3,7 @@ import { Edit, useForm, useSelect } from '@refinedev/antd';
 import { getValueProps, mediaUploadMapper } from '@refinedev/strapi-v4';
 import { Form, Input, Select, Upload, Radio } from 'antd';
 
-import { TOKEN_KEY, API_URL } from '../../constants';
+import { TOKEN_KEY, DOMAIN } from '../../constants';
 import { ICategory, IPost } from '../../interfaces';
 
 export const PostEdit: React.FC = () => {
@@ -69,12 +69,12 @@ export const PostEdit: React.FC = () => {
           <Form.Item
             name="cover"
             valuePropName="fileList"
-            getValueProps={(data) => getValueProps(data, API_URL)}
+            getValueProps={(data) => getValueProps(data, DOMAIN)}
             noStyle
           >
             <Upload.Dragger
               name="files"
-              action={`${API_URL}/api/v1/upload`}
+              action={`${DOMAIN}/api/v1/upload`}
               headers={{
                 Authorization: `Bearer ${localStorage.getItem(TOKEN_KEY)}`,
               }}

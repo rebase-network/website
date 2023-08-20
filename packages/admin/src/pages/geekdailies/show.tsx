@@ -5,7 +5,6 @@ import { Show, MarkdownField, ListButton, EditButton, RefreshButton, ImageField 
 import { Space, Typography } from 'antd';
 
 import { IGeekDaily, ICategory } from '../../interfaces';
-import { API_URL } from '../../constants';
 
 const { Title, Text } = Typography;
 
