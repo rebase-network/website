@@ -4,12 +4,9 @@ import {
   List,
   useTable,
   getDefaultSortOrder,
-  FilterDropdown,
-  useSelect,
   DateField,
   EditButton,
   DeleteButton,
-  ImageField,
   ShowButton,
 } from '@refinedev/antd';
 
@@ -26,15 +23,8 @@ export const GeekdailyList: React.FC<IResourceComponentsProps> = () => {
       },
     ],
     metaData: {
-      populate: ['category', 'cover'],
+      populate: ['editor'],
     },
-  });
-
-  const { selectProps } = useSelect({
-    resource: 'categories',
-    optionLabel: 'title',
-    optionValue: 'id',
-    metaData: {},
   });
 
   return (
@@ -54,27 +44,19 @@ export const GeekdailyList: React.FC<IResourceComponentsProps> = () => {
           defaultSortOrder={getDefaultSortOrder('id', sorter)}
           sorter={{ multiple: 2 }}
         />
-        <Table.Column dataIndex="episode" key="episode" title="episode" />
+        <Table.Column dataIndex="episode" key="episode" title="Episode" />
         <Table.Column dataIndex="title" key="title" title="Title" />
+        <Table.Column dataIndex="author" key="author" title="Author" />
 
-        <Table.Column dataIndex="author" key="author" title="author" />
         <Table.Column
-          key="[category][id]"
-          dataIndex={['category', 'title']}
-          title="Category"
-          filterDropdown={(props) => (
-            <FilterDropdown {...props}>
-              <Select style={{ minWidth: 200 }} mode="multiple" placeholder="Select Category" {...selectProps} />
-            </FilterDropdown>
-          )}
-        />
-        <Table.Column
-          dataIndex="createdAt"
-          title="Created At"
-          render={(value) => <DateField value={value} format="LLL" />}
-          defaultSortOrder={getDefaultSortOrder('createdAt', sorter)}
+          dataIndex="time"
+          title="Time"
+          render={(value) => <DateField value={value} format="YYYY-MM-DD" />}
+          defaultSortOrder={getDefaultSortOrder('time', sorter)}
           sorter={{ multiple: 1 }}
         />
+
+        <Table.Column dataIndex={['editor', 'username']} key="editor" title="Editor" />
 
         <Table.Column<{ id: string }>
           title="Actions"

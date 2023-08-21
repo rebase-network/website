@@ -2,10 +2,12 @@ import dayjs from "dayjs";
 import React, { useState } from 'react';
 import { useCreateMany } from '@refinedev/core';
 
-import { getValueProps } from '@refinedev/strapi-v4';
-import { Create, useForm, useSelect } from '@refinedev/antd';
-import { Form, Input, Select, Col, Row, Divider } from 'antd';
+import { AuthHelper } from '@refinedev/strapi-v4';
 
+import { Create, useForm, useSelect } from '@refinedev/antd';
+import { Form, Input, Col, Row, Divider } from 'antd';
+
+import { TOKEN_KEY, API_URL } from '../../constants';
 import { IGeekDaily } from '../../interfaces';
 
 export const GeekdailyCreate: React.FC = () => {
@@ -13,9 +15,16 @@ export const GeekdailyCreate: React.FC = () => {
 
   const { formProps, saveButtonProps } = useForm<IGeekDaily>();
 
+  const strapiAuthHelper = AuthHelper(API_URL);
+
   const { mutate } = useCreateMany();
 
-  const bulkInsert = (items: any) => {
+  const bulkInsert = async (items: any) => {
+
+
+    const credentials = localStorage.getItem(TOKEN_KEY);
+
+    const me = await strapiAuthHelper.me(credentials);
 
     const currDate = dayjs().format("YYYY-MM-DD");
 
@@ -25,6 +34,7 @@ export const GeekdailyCreate: React.FC = () => {
         values: [
           {
             episode: items.episode,
+            editor: me.data,
             author: items.author1,
             title: items.title1,
             url: items.url1,
@@ -33,6 +43,7 @@ export const GeekdailyCreate: React.FC = () => {
           },
           {
             episode: items.episode,
+            editor: me.data,
             author: items.author2,
             title: items.title2,
             url: items.url2,
@@ -41,6 +52,7 @@ export const GeekdailyCreate: React.FC = () => {
           },
           {
             episode: items.episode,
+            editor: me.data,
             author: items.author3,
             title: items.title3,
             url: items.url3,

@@ -10,6 +10,9 @@ const { Title, Text } = Typography;
 
 export const GeekdailyShow: React.FC<IResourceComponentsProps> = () => {
   const { queryResult } = useShow<IGeekDaily>({
+    metaData: {
+      populate: ['editor'],
+    },
   });
 
   const { data, isLoading } = queryResult;
@@ -38,6 +41,9 @@ export const GeekdailyShow: React.FC<IResourceComponentsProps> = () => {
       <Title level={5}>Episode</Title>
       <Text>{record?.episode}</Text>
 
+      <Title level={5}>Author</Title>
+      <Text>{record?.author}</Text>
+
       <Title level={5}>Title</Title>
       <Text>{record?.title}</Text>
 
@@ -45,7 +51,10 @@ export const GeekdailyShow: React.FC<IResourceComponentsProps> = () => {
       <Text>{record?.url}</Text>
 
       <Title level={5}>Time</Title>
-      <Text>{record?.time}</Text>
+      <Text>{record?.time.toString()}</Text>
+
+      <Title level={5}>Editor</Title>
+      <Text>{record?.editor?.username}</Text>
 
       <Title level={5}>Introduce</Title>
       <MarkdownField value={record?.introduce} />

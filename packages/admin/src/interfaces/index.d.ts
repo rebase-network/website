@@ -52,8 +52,14 @@ export interface IPost {
   category: ICategory;
 }
 
+export interface IUser {
+  name: string;
+  email: string;
+}
+
 export interface IGeekDaily {
   id: string;
+  editor: IUser;
   episode: string;
   title: string;
   url: string;
