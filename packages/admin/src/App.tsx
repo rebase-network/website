@@ -3,7 +3,6 @@ import { Refine, AuthBindings, Authenticated } from '@refinedev/core';
 
 import {
   notificationProvider,
-  ThemedLayout,
   ThemedLayoutV2,
   ThemedTitleV2,
   ErrorComponent,
@@ -20,40 +19,48 @@ import routerProvider, {
 
 import axios from 'axios';
 import { ConfigProvider } from 'antd';
-import { GithubFilled } from '@ant-design/icons';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 
+import { RegisterPage } from '../src/pages/register';
+import { UserList } from '../src/pages/users';
 import { PostList, PostCreate, PostEdit, PostShow } from '../src/pages/posts';
 import { GeekdailyList, GeekdailyCreate, GeekdailyEdit, GeekdailyShow } from '../src/pages/geekdailies';
-
-import { UserList } from '../src/pages/users';
-
 import { CategoryList, CategoryCreate, CategoryEdit } from '../src/pages/categories';
+
 
 import { TOKEN_KEY, API_URL } from './constants';
 import '@refinedev/antd/dist/reset.css';
-// import Logo from '../public/rebase.jpg';
-import Logo from '/public/rebase.jpg';
 
 const App: React.FC = () => {
   const axiosInstance = axios.create();
-  const strapiAuthHelper = AuthHelper(API_URL + '/api/v1');
+  const strapiAuthHelper = AuthHelper(API_URL);
 
   const authProvider: AuthBindings = {
-    // register: async ({ email, password, providerName }) => {
-    //   return {
-    //     success: true,
-    //   };
+    register: async (params) => {
+      if (params.username && params.email && params.password) {
+        const res = await axiosInstance.post(`${API_URL}/auth/local/register`, {
+          username: params.username,
+          email: params.email,
+          password: params.password,
+        })
 
-    //   return {
-    //     success: false,
-    //     error: {
-    //       name: 'Register Error',
-    //       message: 'Invalid email or password',
-    //     },
-    //   };
-    // },
-    login: async ({ email, password }) => {
+        return {
+          success: true,
+          redirectTo: "/",
+        };
+      }
+
+      return {
+        success: false,
+        error: {
+          message: "Register failed",
+          name: "Invalid username or email",
+        },
+      };
+    },
+
+    login: async ({ email, password, providerName }) => {
+
       try {
         const { data, status } = await strapiAuthHelper.login(email, password);
         if (status === 200) {
@@ -99,6 +106,7 @@ const App: React.FC = () => {
     },
     check: async () => {
       const token = localStorage.getItem(TOKEN_KEY);
+
       if (token) {
         axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         return {
@@ -142,19 +150,19 @@ const App: React.FC = () => {
       <ConfigProvider theme={RefineThemes.Green}>
         <Refine
           authProvider={authProvider}
-          dataProvider={DataProvider(API_URL + '/api/v1', axiosInstance)}
+          dataProvider={DataProvider(API_URL, axiosInstance)}
           routerProvider={routerProvider}
           resources={[
-            {
-              name: 'posts',
-              list: '/posts',
-              create: '/posts/create',
-              edit: '/posts/edit/:id',
-              show: '/posts/show/:id',
-              meta: {
-                canDelete: true,
-              },
-            },
+            // {
+            //   name: 'posts',
+            //   list: '/posts',
+            //   create: '/posts/create',
+            //   edit: '/posts/edit/:id',
+            //   show: '/posts/show/:id',
+            //   meta: {
+            //     canDelete: true,
+            //   },
+            // },
             {
               name: 'geekdailies',
               list: '/geekdailies',
@@ -230,32 +238,13 @@ const App: React.FC = () => {
                   <AuthPage
                     title={'Rebase'}
                     type="login"
-                    providers={[
-                      {
-                        name: 'github',
-                        icon: <GithubFilled />,
-                        label: 'Sign in with GitHub',
-                      },
-                    ]}
+                    providers={[]}
                   />
                 }
               />
 
-              <Route
-                path="/register"
-                element={
-                  <AuthPage
-                    type="register"
-                    providers={[
-                      {
-                        name: 'github',
-                        icon: <GithubFilled />,
-                        label: 'Sign up with GitHub',
-                      },
-                    ]}
-                  />
-                }
-              />
+              <Route path="/register" element={<RegisterPage />} />
+
             </Route>
 
             <Route
