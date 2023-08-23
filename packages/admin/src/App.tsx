@@ -79,7 +79,7 @@ const App: React.FC = () => {
         return {
           success: false,
           error: {
-            message: errObj?.mesage || 'Login failed',
+            message: errObj?.message || 'Login failed',
             name: errObj?.id || 'Invalid email or password',
           },
         };
