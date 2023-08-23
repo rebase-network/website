@@ -53,7 +53,7 @@ export interface IPost {
 }
 
 export interface IUser {
-  name: string;
+  username: string;
   email: string;
 }
 

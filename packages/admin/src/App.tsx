@@ -24,7 +24,7 @@ import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import { RegisterPage } from '../src/pages/register';
 import { UserList } from '../src/pages/users';
 import { PostList, PostCreate, PostEdit, PostShow } from '../src/pages/posts';
-import { GeekdailyList, GeekdailyCreate, GeekdailyEdit, GeekdailyShow } from '../src/pages/geekdailies';
+import { GeekdailyList, GeekdailyCreate, GeekdailyEdit, GeekdailyShow, WechatShow } from '../src/pages/geekdailies';
 import { CategoryList, CategoryCreate, CategoryEdit } from '../src/pages/categories';
 
 
@@ -214,6 +214,7 @@ const App: React.FC = () => {
                 <Route path="create" element={<GeekdailyCreate />} />
                 <Route path="edit/:id" element={<GeekdailyEdit />} />
                 <Route path="show/:id" element={<GeekdailyShow />} />
+                <Route path="wechat" element={<WechatShow />} />
               </Route>
 
               <Route path="/categories">
