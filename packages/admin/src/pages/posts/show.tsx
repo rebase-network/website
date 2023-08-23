@@ -29,8 +29,6 @@ export const PostShow: React.FC<IResourceComponentsProps> = () => {
     queryResult.refetch();
   };
 
-  console.log(record?.cover);
-
   return (
     <Show
       isLoading={isLoading}

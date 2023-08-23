@@ -2,6 +2,8 @@ import dayjs from "dayjs";
 import React, { useState } from 'react';
 import { useCreateMany } from '@refinedev/core';
 
+import { useNavigate } from "react-router-dom";
+
 import { AuthHelper } from '@refinedev/strapi-v4';
 
 import { Create, useForm, useSelect } from '@refinedev/antd';
@@ -18,9 +20,9 @@ export const GeekdailyCreate: React.FC = () => {
   const strapiAuthHelper = AuthHelper(API_URL);
 
   const { mutate } = useCreateMany();
+  const navigate = useNavigate();
 
   const bulkInsert = async (items: any) => {
-
 
     const credentials = localStorage.getItem(TOKEN_KEY);
 
@@ -60,18 +62,43 @@ export const GeekdailyCreate: React.FC = () => {
             introduce: items.introduce3,
           },
         ],
+
+        successNotification: (data, values, resource) => {
+
+          return {
+            message: `Successfully fetched`,
+            description: "Success with no errors",
+            type: "success",
+          };
+        },
+        errorNotification: (data, values, resource) => {
+          return {
+            message: `Something went wrong`,
+            description: "Error",
+            type: "error",
+          };
+        },
+
       },
 
       {
-        onSuccess: () => { },
-      },
-    );
-  };
+        onSuccess: (data, variables, context) => {
 
-  const { selectProps } = useSelect({
-    resource: 'categories',
-    // defaultValue: 2,
-  });
+          navigate("/geekdailies/wechat", {
+            replace: true,
+            state: data,
+          });
+
+        },
+
+        onError: (error, variables, context) => {
+        },
+      },
+
+    );
+
+
+  };
 
   return (
     <Create saveButtonProps={saveButtonProps}>
@@ -80,7 +107,6 @@ export const GeekdailyCreate: React.FC = () => {
         layout="horizontal"
         onFinish={(values) => {
           bulkInsert(values);
-          console.log('Received values of form:', values);
         }}
       >
         <Form.Item label="Episode" name="episode" rules={[{ required: true }]}>
