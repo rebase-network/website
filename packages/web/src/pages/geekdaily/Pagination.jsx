@@ -10,11 +10,11 @@ const avatarImg = (editor) => {
   if (editor && editor.avatar) {
     return (
       <div className="avatar avatar-sm">
-        <img
-          src={API_DOMAIN + editor.avatar.url}
+        {/* <img
+          src={API_DOMAIN }
           className="avatar-image rounded-circle"
-          alt={editor.name}
-        />
+          alt={editor.username}
+        /> */}
       </div>
     )
   }
@@ -73,7 +73,7 @@ export default function GeekDailyPagination() {
 
                 <div className="card-bottom-info">
                   {avatarImg(item.editor)}
-                  <span className="text-uppercase-xs text-muted ml-2">{!!item.editor && item.editor.name}</span>
+                  <span className="text-uppercase-xs text-muted ml-2">{!!item.editor && item.editor.username}</span>
                   <div className="text-uppercase-xs text-muted ml-auto">
                     <i className="far fa-calendar fa-xs relative-top--1"></i>
                     <span style={{ marginLeft: '5px' }}>{item.time}</span>
