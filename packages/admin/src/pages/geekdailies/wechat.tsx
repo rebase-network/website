@@ -1,9 +1,78 @@
 import { useLocation } from "react-router-dom";
+import SteinStore from "stein-js-client";
+
+import { steinhqUrl, learnblockchainApikey, learnblockchainUrlPosts } from '../../constants';
 
 export const WechatShow: React.FC = () => {
-
   const { state } = useLocation();
-  const items = state.data;
+  const items = state;
+
+  const newitems = items.map((item: any) => {
+    delete item['editor'];
+    return item
+  });
+
+  const pushToSteinHQ = (connUrl: string, storeData: any) => {
+    const store = new SteinStore(connUrl);
+
+    store.append("Summary", storeData).then((res: any) => {
+      console.log(res);
+    });
+
+  };
+
+  const pushToLearnblockchain = (apikey: any, connUrl: any, dx: any) => {
+
+    const _title = "Rebase 极客日报 " + dx[0].episode;
+
+    const _content = `
+  ### ${dx[0].title}
+
+  ${dx[0].url}
+
+  **${dx[0].author}**: ${dx[0].introduce}
+
+  ### ${dx[1].title}
+
+  ${dx[1].url}
+
+  **${dx[1].author}**: ${dx[1].introduce}
+
+  ### ${dx[2].title}
+
+  ${dx[2].url}
+
+  **${dx[2].author}**: ${dx[2].introduce}
+  `;
+
+    let _headers = {
+      "content-type": "application/x-www-form-urlencoded",
+      "x-api-key": apikey,
+    };
+
+    let params = new URLSearchParams();
+
+    params.append("title", _title);
+    params.append("content", _content);
+    params.append("type", "1"); // 文章类型，1: 原创，2: 翻译，3: 转载，可不填
+    params.append("is_public", "1"); // 文章是否公开，1: 公开，2: 仅自己可见，默认为公开
+    params.append("category_id", "8"); // 填写文章分类 ID，5: 以太坊，7: Solidity, 8: 入门，13: 安全，23: 零知识，27: DeFi，可不填
+
+    return fetch(connUrl, {
+      method: "POST",
+      headers: _headers,
+      body: params,
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log("learnblockchain result =>", json);
+      });
+  }
+
+
+  pushToSteinHQ(steinhqUrl, newitems);
+
+  pushToLearnblockchain(learnblockchainApikey, learnblockchainUrlPosts, newitems);
 
   return (
     <>
@@ -68,8 +137,7 @@ export const WechatShow: React.FC = () => {
           </span>
         </h2>
 
-
-        {items.map((item: any) => (
+        {newitems.map((item: any) => (
 
           <blockquote
             style={{
@@ -88,7 +156,6 @@ export const WechatShow: React.FC = () => {
               background: "rgb(247, 247, 247)"
             }}
           >
-
             <p
               style={{
                 WebkitTapHighlightColor: "transparent",
@@ -100,7 +167,7 @@ export const WechatShow: React.FC = () => {
             >
               <strong>
                 <span style={{ color: "rgb(0, 0, 0)" }}>
-                  {item.data.attributes.title}
+                  {item.title}
                 </span>
               </strong>
             </p>
@@ -128,7 +195,7 @@ export const WechatShow: React.FC = () => {
                 letterSpacing: "0.1em"
               }}
             >
-              {item.data.attributes.url}
+              {item.url}
               <br />
             </p>
             <p
@@ -164,12 +231,12 @@ export const WechatShow: React.FC = () => {
                 }}
               >
                 <strong>
-                  {item.data.attributes.author}
+                  {item.author}
                 </strong>
                 :
               </span>
               <span style={{ color: "rgb(0, 0, 0)" }}>
-                {item.data.attributes.introduce}
+                {item.introduce}
               </span>
               <span
                 style={{

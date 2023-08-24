@@ -86,7 +86,7 @@ export const GeekdailyCreate: React.FC = () => {
 
           navigate("/geekdailies/wechat", {
             replace: true,
-            state: data,
+            state: variables.values,
           });
 
         },
