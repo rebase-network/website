@@ -1,7 +1,6 @@
 import { useLocation } from "react-router-dom";
-import SteinStore from "stein-js-client";
 
-import { steinhqUrl, learnblockchainApikey, learnblockchainUrlPosts } from '../../constants';
+import { learnblockchainApikey, learnblockchainUrlPosts } from '../../constants';
 
 export const WechatShow: React.FC = () => {
   const { state } = useLocation();
@@ -11,15 +10,6 @@ export const WechatShow: React.FC = () => {
     delete item['editor'];
     return item
   });
-
-  const pushToSteinHQ = (connUrl: string, storeData: any) => {
-    const store = new SteinStore(connUrl);
-
-    store.append("Summary", storeData).then((res: any) => {
-      console.log(res);
-    });
-
-  };
 
   const pushToLearnblockchain = (apikey: any, connUrl: any, dx: any) => {
 
@@ -68,9 +58,6 @@ export const WechatShow: React.FC = () => {
         console.log("learnblockchain result =>", json);
       });
   }
-
-
-  pushToSteinHQ(steinhqUrl, newitems);
 
   pushToLearnblockchain(learnblockchainApikey, learnblockchainUrlPosts, newitems);
 

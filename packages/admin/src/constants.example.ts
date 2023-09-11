@@ -1,4 +1,3 @@
-export const steinhqUrl = '';
 export const learnblockchainApikey = '';
 export const learnblockchainUrlPosts = '';
 
